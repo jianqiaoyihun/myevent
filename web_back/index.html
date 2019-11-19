@@ -52,7 +52,26 @@
         <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
     </div>
 
-
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">星星提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="msgInfo">您确定要退出吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnsure">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     <script>
         var $level01 = $('.level01');
@@ -105,20 +124,24 @@
             }
         }
     </script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/common/common.js"></script>
     <script src="./js/utils/user.js"></script>
     <script>
         // 管理员退出功能
         $("#btnlogout").click(function() {
-            if (window.confirm("你确定要退出吗？") === false) {
-                return
-            }
-            user.logout(function(res) {
-                if (res.code === 200) {
-                    location.href = "./login.html"
-                }
+            $('#myModal').modal('show');
+            $("#btnsure").click(function() {
+                // console.log(123)
+                user.logout(function(res) {
+                    if (res.code === 200) {
+                        location.href = "./login.html"
+                    }
 
+                })
             })
+
+
         })
 
         // 获取用户信息
