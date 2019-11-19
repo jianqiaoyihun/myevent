@@ -11,5 +11,10 @@ var user = {
         $.post(URL.ADMIN_LOGOUT, function(res) {
             callback(res)
         })
+    },
+    getmsg: function(callback) {
+        $.get(URL.ADMIN_GETUSER, function(res) {
+            callback(res)
+        })
     }
 }
