@@ -6,5 +6,10 @@ var user = {
         }, function(res) {
             callback(res)
         })
+    },
+    logout: function(callback) {
+        $.post(URL.ADMIN_LOGOUT, function(res) {
+            callback(res)
+        })
     }
 }
