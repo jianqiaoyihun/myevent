@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -20,17 +21,69 @@
 
         <div class="login_form_con">
             <div class="login_title"></div>
-            <form class="login_form">
+            <form class="login_form" id="myForm">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
                 <input type="text" class="input_txt" placeholder="邮箱/手机号">
                 <input type="password" class="input_pass" placeholder="密码">
-                <input type="submit" class="input_sub" value="登 录">
+                <input type="button" id="btnlogin" class="input_sub" value="登 录">
             </form>
         </div>
 
-    </div> 
-
+    </div>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">星星提示您</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="msgInfo"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/utils/user.js"></script>
+    <script>
+        // 实现登录功能
+        $("#btnlogin").click(function() {
+            // 获取输入信息
+            var userName = $(".input_txt").val().trim();
+            var passWord = $(".input_pass").val().trim();
+            // console.log(userName, passWord)
+            // 判断是否为空
+            if (userName === "" || passWord === "") {
+                // alert("不能为空");
+                $('#msgInfo').text('不能为空');
+                $('#myModal').modal('show');
+                return;
+            }
+            // 调用封装的方法，验证登录
+            user.login(userName, passWord, function(res) {
+                // console.log(res)
+                if (res.code === 200) {
+                    // 登录成功，跳转页面
+                    location.href = "./index.html"
+                } else {
+                    // 登录失败
+                    $('#msgInfo').text(res.msg);
+                    $('#myModal').modal('show');
+                    // alert(res.msg)
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
