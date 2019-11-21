@@ -13,6 +13,11 @@ var cate = {
         $.post(URL.ADMIN_CATE_DELETE, { id: id }, function(res) {
             callback(res)
         })
+    },
+    edit: function(id, name, slug, callback) {
+        $.post(URL.ADMIN_CATE_EDIT, { id: id, name: name, slug: slug }, function(res) {
+            callback(res)
+        })
     }
 
 
