@@ -66,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="control-label">分类别名:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-slug">
                         </div>
                     </form>
                 </div>
@@ -87,14 +87,14 @@
         });
 
         $('#model_shutoff').click(function() {
-            alert('shutoff');
+            // alert('shutoff');
             $('#addModal').modal('hide');
         });
 
-        $('#model_add').click(function() {
-            alert('add');
-            $('#addModal').modal('hide');
-        });
+        // $('#model_add').click(function() {
+        //     alert('add');
+        //     $('#addModal').modal('hide');
+        // });
 
         $('.category_table').delegate('a', 'click', function() {
             if ($(this).hasClass('btn-info')) {
@@ -128,6 +128,29 @@
             })
         }
         getAndShow()
+
+
+
+        // 实现文章类别的新增
+        $("#model_add").click(function() {
+            var name = $("#recipient-name").val().trim()
+            var slug = $("#recipient-slug").val().trim()
+            if (name === "" || slug === "") {
+                alert("不能为空")
+                return
+            }
+            // console.log(name, slug)
+            cate.add(name, slug, function(res) {
+                // console.log(res);
+                if (res.code === 200) {
+                    $("#recipient-name").val("");
+                    $("#recipient-slug").val("");
+                    $('#addModal').modal('hide');
+                    getAndShow()
+                }
+
+            })
+        })
     </script>
 </body>
 
