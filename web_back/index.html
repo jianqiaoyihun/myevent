@@ -131,17 +131,20 @@
         // 管理员退出功能
         $("#btnlogout").click(function() {
             $('#myModal').modal('show');
-            $("#btnsure").click(function() {
-                // console.log(123)
-                user.logout(function(res) {
-                    if (res.code === 200) {
-                        location.href = "./login.html"
-                    }
 
-                })
+
+
+        })
+
+        // 模态框的操作
+        $("#btnsure").click(function() {
+            // console.log(123)
+            user.logout(function(res) {
+                if (res.code === 200) {
+                    location.href = "./login.html"
+                }
+
             })
-
-
         })
 
         // 获取用户信息
