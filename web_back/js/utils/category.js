@@ -8,6 +8,11 @@ var cate = {
         $.post(URL.ADMIN_CATE_ADD, { name: name, slug: slug }, function(res) {
             callback(res)
         })
+    },
+    delete: function(id, callback) {
+        $.post(URL.ADMIN_CATE_DELETE, { id: id }, function(res) {
+            callback(res)
+        })
     }
 
 
