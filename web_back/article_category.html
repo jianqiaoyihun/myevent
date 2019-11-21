@@ -68,6 +68,7 @@
                             <label for="message-text" class="control-label">分类别名:</label>
                             <input type="text" class="form-control" id="recipient-slug">
                         </div>
+                        <div style="color:red;display: none;" id="kong">内容不能为空!!!</div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -167,7 +168,8 @@
             var name = $("#recipient-name").val().trim()
             var slug = $("#recipient-slug").val().trim()
             if (name === "" || slug === "") {
-                alert("不能为空")
+                // alert("不能为空")
+                $("#kong").css("display", "block")
                 return
             }
             // console.log(name, slug)
