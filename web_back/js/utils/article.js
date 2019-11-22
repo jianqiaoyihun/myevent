@@ -1,6 +1,6 @@
 var article = {
     search: function(obj, callback) {
-        $.get(URL.ADMIN_ARTICLE_SEARCH, { 'page': curPage, 'type': type, 'state': status }, function(res) {
+        $.get(URL.ADMIN_ARTICLE_SEARCH, { 'page': obj.page, 'type': obj.type, 'state': obj.state }, function(res) {
             callback(res)
         })
     },
