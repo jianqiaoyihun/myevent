@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
                     <div class="col-sm-10">
-                        <img src="images/pic06.jpg" class="article_cover">
+                        <img src="./images/default.png" class="article_cover">
                         <input type="file" id="exampleInputFile" name="cover">
                     </div>
                 </div>
@@ -122,6 +122,28 @@
                     alert(res.msg)
                 }
             })
+        })
+
+
+        // 图片预览
+        $("#exampleInputFile").change(function() {
+            // this就是input框，
+            // 它有一个files属性，保存当前用户选中的文件
+            // files[0]表示当前选择的第一个文件
+            // console.dir(this)
+            // var file = this.files[0];
+            // window.URL.createObjectURL 给对象创建一个临时的url.
+            // var filePath = window.URL.createObjectURL(file)
+            // console.dir(filePath)
+            // 把路径给img标签，实现预览的功能
+            // $(".article_cover").prop("src", filePath)
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            r.onload = function(e) {
+                $(".article_cover").prop("src", this.result)
+            }
+
         })
     </script>
 </body>
