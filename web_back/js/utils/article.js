@@ -34,5 +34,10 @@ var article = {
             }
 
         })
+    },
+    count: function(callback) {
+        $.get(URL.ADMIN_ARTICLE_COUNT, function(res) {
+            callback(res)
+        })
     }
 }

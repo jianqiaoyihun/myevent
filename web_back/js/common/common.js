@@ -16,10 +16,15 @@ var URL = {
     ADMIN_ARTICLE_PUBLISH: dizhi + "admin/article_publish",
     ADMIN_ARTICLE_EDIT: dizhi + "admin/article_edit",
     ADMIN_ARTICLE_DELETE: dizhi + "admin/article_delete",
+    ADMIN_ARTICLE_COUNT: dizhi + "admin/article_count",
 
 
 
     ADMIN_USERINFO_GET: dizhi + "admin/userinfo_get",
-    ADMIN_USERINFO_EDIT: dizhi + "admin/userinfo_edit"
+    ADMIN_USERINFO_EDIT: dizhi + "admin/userinfo_edit",
+
+
+
+    ADMIN_COMMENT_COUNT: dizhi + "admin/comment_count"
 
 }
