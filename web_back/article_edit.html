@@ -40,12 +40,8 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
-                        <select class="form-control">
-                            <option>类别一</option>
-                            <option>类别二</option>
-                            <option>类别三</option>
-                            <option selected>类别四</option>
-                            <option>类别五</option>
+                        <select class="form-control" id="selCategory">
+                            
                         </select>
                     </div>
                 </div>
@@ -78,6 +74,24 @@
         </div>
     </div>
 
+
+    <script src="./js/template-web.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/utils/article.js"></script>
+    <script src="./js/utils/category.js"></script>
+    <script id="temp_cate" type="text/html">
+
+        {{each data item}}
+        <option value="{{item.id}}">{{item.name}}</option>
+        {{/each}}
+    </script>
+    <script>
+        // 获取分类信息并显示
+        cate.show(function(res) {
+            // console.log(template("temp_cate", res))
+            $("#selCategory").html(template("temp_cate", res))
+        })
+    </script>
 </body>
 
 </html>
