@@ -25,6 +25,7 @@ var URL = {
 
 
 
-    ADMIN_COMMENT_COUNT: dizhi + "admin/comment_count"
+    ADMIN_COMMENT_COUNT: dizhi + "admin/comment_count",
+    ADMIN_COMMENT_SEARCH: dizhi + "admin/comment_search"
 
 }
