@@ -90,6 +90,22 @@
         cate.show(function(res) {
             // console.log(template("temp_cate", res))
             $("#selCategory").html(template("temp_cate", res))
+        });
+
+        // 获取编辑文章的信息               
+        var  id  = window.location.search.substr(4);        
+        // console.log(id);       
+        article.search({            
+            id: id        
+        }, function(res)  {            
+            // console.log(res);
+            if (res.code === 200) {
+                $("#inputEmail3").val(res.data.title)
+                $("#rich_content").val(res.data.content)
+                $("#selCategory").val(res.data.type)
+                $("#dateinput").val(res.data.date)
+                $(".article_cover").prop("src", res.data.cover)
+            }        
         })
     </script>
 </body>
