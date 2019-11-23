@@ -21,5 +21,18 @@ var article = {
             }
         })
 
+    },
+    edit: function(obj, callback) {
+        $.ajax({
+            url: URL.ADMIN_ARTICLE_EDIT,
+            data: obj,
+            processData: false, // 不要让jquery去处理formData数据
+            contentType: false, // 不设置默认的请求头
+            type: 'post',
+            success: function(res) {
+                callback(res)
+            }
+
+        })
     }
 }
