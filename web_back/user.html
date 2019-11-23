@@ -20,23 +20,23 @@
             用户信息修改
         </div>
         <div class="container-fluid common_con">
-            <form class="form-horizontal article_form">
+            <form class="form-horizontal article_form" id="myform">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">用户名称：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputName" value="">
+                        <input type="text" class="form-control" id="inputName" value="" name="username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">昵称：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputNick" value="">
+                        <input type="text" class="form-control" id="inputNick" value="" name="nickname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">邮箱：</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputEmail" value="">
+                        <input type="text" class="form-control" id="inputEmail" value="" name="email">
                     </div>
                 </div>
 
@@ -44,21 +44,21 @@
                     <label for="inputPassword3" class="col-sm-2 control-label">用户图标：</label>
                     <div class="col-sm-10">
                         <img src="images/2.jpg" alt="" class="user_pic">
-                        <input type="file" id="exampleInputFile">
+                        <input type="file" id="exampleInputFile" name="user_pic">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">密码：</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="inputPwd" value="">
+                        <input type="password" class="form-control" id="inputPwd" value="" name="password">
                     </div>
                 </div>
 
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">修改</button>
+                        <button type="button" class="btn btn-success" id="modify">修改</button>
                     </div>
                 </div>
             </form>
@@ -93,9 +93,19 @@
             var r = new FileReader();
             r.readAsDataURL(file);
             r.onload = function(e) {
-                $(".article_cover").prop("src", this.result)
+                $(".user_pic").prop("src", this.result)
             }
 
+        })
+
+
+        // 提交修改信息并渲染到页面
+        $("#modify").click(function() {
+            var fd = new FormData(document.getElementById("myform"));
+            console.log(fd.get("name"))
+            user.editinfo(fd, function(res) {
+                getAndShow()
+            })
         })
     </script>
 </body>

@@ -27,6 +27,8 @@ var user = {
             url: URL.ADMIN_USERINFO_EDIT,
             type: "post",
             data: obj,
+            processData: false, // 不要让jquery去处理formData数据
+            contentType: false, // 不设置默认的请求头
             success: function(res) {
                 callback(res)
             }
