@@ -16,5 +16,20 @@ var user = {
         $.get(URL.ADMIN_GETUSER, function(res) {
             callback(res)
         })
+    },
+    getinfo: function(callback) {
+        $.get(URL.ADMIN_USERINFO_GET, function(res) {
+            callback(res)
+        })
+    },
+    editinfo: function(obj, callback) {
+        $.ajax({
+            url: URL.ADMIN_USERINFO_EDIT,
+            type: "post",
+            data: obj,
+            success: function(res) {
+                callback(res)
+            }
+        })
     }
 }
