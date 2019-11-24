@@ -113,7 +113,8 @@
         // 修改信息提交功能
         $("#reset").click(function() {
             var fd = new FormData(document.getElementById("myform"));
-            fd.append("id", id)
+            fd.append("id", id);
+            fd.set("content", tinyMCE.activeEditor.getContent());
             article.edit(fd, function(res) {
                 console.log(res)
                 if (res.code === 200) {
