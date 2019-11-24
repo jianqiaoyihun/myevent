@@ -8,5 +8,10 @@ var comment = {
         $.get(URL.ADMIN_COMMENT_SEARCH, { page: obj.page, perpage: obj.perpage }, function(res) {
             callback(res)
         })
+    },
+    delete: function(id, callback) {
+        $.post(URL.ADMIN_COMMENT_DELETE, { id: id }, function(res) {
+            callback(res)
+        })
     }
 }
